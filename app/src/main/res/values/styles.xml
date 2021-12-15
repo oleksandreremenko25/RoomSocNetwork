@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="android:Theme.Material">
+        <!-- Main theme colors -->
+        <item name="android:colorPrimary">@color/primary</item>
+        <!-- darker variant for the status bar and contextual app bars -->
+        <item name="android:colorPrimaryDark">@color/primary_dark</item>
+        <!-- theme UI controls like checkboxes and text fields -->
+    </style>
+<!--    user_short.xml    -->
+    <style name="shortUserIcon">
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+<!--    user_full.xml    -->
+    <style name="fullUserAboutName">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold|normal</item>
+    </style>
+    <style name="buttonEditProfile" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="cornerSize">8dp</item>
+        <item name="strokeColor">@color/primary_red</item>
+        <item name="android:textColor">@color/primary_red</item>
+        <item name="strokeWidth">2dp</item>
+    </style>
+    <style name="numberFollowing">
+        <item name="android:textColor">@color/primary_black</item>
+        <item name="android:textStyle">bold|normal</item>
+    </style>
+    <style name="tittleFollowing">
+        <item name="android:textColor">@color/primary_gray</item>
+        <item name="android:textStyle">bold|normal</item>
+    </style>
+    <style name="numberFollowers">
+        <item name="android:textColor">@color/primary_black</item>
+        <item name="android:textStyle">bold|normal</item>
+    </style>
+    <style name="tittleFollowers">
+        <item name="android:textColor">@color/primary_gray</item>
+        <item name="android:textStyle">bold|normal</item>
+    </style>
+    <style name="numberPostsLikesWrap">
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">5dp</item>
+    </style>
+    <style name="tittleLikes">
+        <item name="android:paddingLeft">5dp</item>
+    </style>
+    <style name="numberPostsWrap" parent="numberPostsLikesWrap">
+        <item name="android:textColor">@color/primary_white</item>
+        <item name="android:background">@color/primary_red</item>
+    </style>
+    <style name="numberLikesWrap" parent="numberPostsLikesWrap">
+    </style>
+    <style name="tittlePosts">
+        <item name="android:paddingLeft">5dp</item>
+    </style>
+    <style name="autorPostsName">
+        <item name="android:textColor">@color/primary_black</item>
+        <item name="android:textStyle">bold|normal</item>
+    </style>
+<!--    user_edit    -->
+    <style name="tittle">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold|normal</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+</resources>
