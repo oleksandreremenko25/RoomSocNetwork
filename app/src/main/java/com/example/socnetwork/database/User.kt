@@ -15,9 +15,9 @@ data class User(
     // Встановіть параметр autoGenerateдо true так що Room створює ідентифікатор для кожної сутності.
     // Це гарантує, що ідентифікатор кожної ночі є унікальним.
 
-    @PrimaryKey(autoGenerate = false)
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "userId")
-    var userId: Long? = 0L,
+    var userId: Long = 0L,
 
     // Налаштуйте імена властивостей за допомогою параметрів
     @ColumnInfo(name = "name")

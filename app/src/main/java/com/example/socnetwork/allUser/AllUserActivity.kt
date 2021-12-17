@@ -35,9 +35,13 @@ class AllUserActivity  : AppCompatActivity()  {
         observeUsers()
     }
 
+
+
     private fun observeUsers() {
         allUserViewModel.allUserList.observe(this, Observer { users ->
-            showUsers(users)
+            users?.let {
+                showUsers(it)
+            }
         })
     }
 
