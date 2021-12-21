@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/mainTittleNew"
+        style="@style/tittle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/mainTittleUserNew"
+        tools:layout_editor_absoluteX="27dp" />
+
+    <TextView
+        android:id="@+id/nameTittleNew"
+        style="@style/tittle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/mainTittleNew"
+        app:layout_constraintTop_toBottomOf="@+id/mainTittleNew"
+        app:layout_constraintEnd_toEndOf="@+id/mainTittleNew"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="@string/nameTittleNew" />
+
+    <EditText
+        android:id="@+id/nameInputNew"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/nameTittleNew"
+        app:layout_constraintTop_toBottomOf="@+id/nameTittleNew"
+        app:layout_constraintEnd_toEndOf="@+id/nameTittleNew"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/nameUserPlaceholder" />
+
+    <TextView
+        android:id="@+id/emailTittleNew"
+        style="@style/tittle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/nameInputNew"
+        app:layout_constraintTop_toBottomOf="@+id/nameInputNew"
+        app:layout_constraintEnd_toEndOf="@+id/nameInputNew"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="@string/emailTittleNew" />
+    <Button
+        android:id="@+id/buttonSaveNewUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="saveNewUserClick"
+        android:text="Save new user">
+
+    </Button>
+</androidx.constraintlayout.widget.ConstraintLayout>

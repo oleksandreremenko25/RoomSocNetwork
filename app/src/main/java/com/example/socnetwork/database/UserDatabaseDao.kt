@@ -21,9 +21,10 @@ interface UserDatabaseDao {
     @Query("DELETE FROM user_table")
     suspend fun clear()
 
-    @Query("SELECT * FROM user_table ORDER BY userId DESC LIMIT 1")
-    suspend fun getUser(): User?
+    @Query("SELECT * FROM user_table WHERE userId=(:userId)")
+    suspend fun getUser(userId: Long): User?
 
     @Query("SELECT * FROM user_table ORDER BY userId DESC")
-    fun getAllUser(): LiveData<List<User>>
+
+    fun getAllUser(): List<User>
 }

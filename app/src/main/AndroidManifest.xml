@@ -19,6 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".allUser.AllUserActivity"></activity>
+        <activity android:name=".fullUser.FullUserActivity"></activity>
+        <activity android:name=".newUser.NewUserActivity"></activity>
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>

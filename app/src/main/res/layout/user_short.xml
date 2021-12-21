@@ -12,8 +12,6 @@
         android:layout_height="200dp"
         android:scaleType="center"
         style="@style/shortUserIcon"/>
-
-
     <TextView
         android:id="@+id/nameUser"
         android:layout_width="match_parent"
@@ -26,10 +24,4 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textSize="22sp"/>
-    <TextView
-        android:id="@+id/testText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="Короткий блок"/>
 </LinearLayout>

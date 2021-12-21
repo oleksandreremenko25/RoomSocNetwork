@@ -7,11 +7,18 @@ import com.example.socnetwork.*
 import com.example.socnetwork.database.UserDatabase
 import androidx.lifecycle.ViewModelProvider
 import android.content.Context
+import android.util.Log
 import android.widget.LinearLayout
 import com.example.socnetwork.database.User
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.user_short.view.*
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import com.example.socnetwork.fullUser.FullUserActivity
+import android.content.Intent
+import com.example.socnetwork.newUser.NewUserActivity
 
 class AllUserActivity  : AppCompatActivity()  {
     private lateinit var allUserViewModel: AllUserViewModel
@@ -21,15 +28,11 @@ class AllUserActivity  : AppCompatActivity()  {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.user_all)
 
-        // Файл requireNotNullФункція Kotlin створює  IllegalArgumentException якщо значення є null.
         val application = requireNotNull(this).application
-        // Посилання на джерело даних через посилання на DAO
         val dataSource = UserDatabase.getInstance(application).userDatabaseDao
 
-        //створення екземпляру viewModelFactory
         val viewModelFactory = AllUserViewModelFactory(dataSource, application)
 
-        // посилання на SleepTrackerViewModel
         allUserViewModel = ViewModelProvider(this, viewModelFactory).get(AllUserViewModel::class.java)
 
         observeUsers()
@@ -60,11 +63,23 @@ class AllUserActivity  : AppCompatActivity()  {
 
             view.nameUser.text = (textBeforeNameUser + " " + oneUser.name)
             view.lastOnlinelUser.text = (textBeforeEmailUser + " " + oneUser.lastOnline)
-            view.id = generatedId;
+
+            view.id = oneUser.userId!!.toInt();
             layout.addView(view)
             generatedId++
         }
     }
 
+    fun userShortClick(views: View) {
+        val intent = Intent(this, FullUserActivity::class.java)
+        val idUser: Int = views.id
+        intent.putExtra("myKey", idUser)
+        startActivity(intent)
+    }
 
+    fun toNewUserClick(views: View) {
+        val intent = Intent(this, NewUserActivity::class.java)
+
+        startActivity(intent)
+    }
 }

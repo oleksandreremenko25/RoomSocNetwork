@@ -8,4 +8,12 @@
         android:id="@+id/allUserActivity"
         android:name="com.example.socnetwork.allUser.AllUserActivity"
         android:label="AllUserActivity" />
+    <activity
+        android:id="@+id/fullUserActivity"
+        android:name="com.example.socnetwork.fullUser.FullUserActivity"
+        android:label="FullUserActivity" />
+    <activity
+        android:id="@+id/newUserActivity"
+        android:name="com.example.socnetwork.newUser.NewUserActivity"
+        android:label="NewUserActivity" />
 </navigation>
