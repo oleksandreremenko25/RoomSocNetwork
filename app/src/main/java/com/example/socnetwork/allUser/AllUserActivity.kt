@@ -61,6 +61,7 @@ class AllUserActivity  : AppCompatActivity()  {
 
             Picasso.get().load(oneUser.photo).placeholder(R.drawable.no).into(view.photoUser);
 
+            view.idUser.text = oneUser.userId.toString()
             view.nameUser.text = (textBeforeNameUser + " " + oneUser.name)
             view.lastOnlinelUser.text = (textBeforeEmailUser + " " + oneUser.lastOnline)
 

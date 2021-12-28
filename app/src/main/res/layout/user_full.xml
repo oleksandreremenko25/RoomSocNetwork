@@ -159,6 +159,12 @@
             android:scaleType="centerCrop" />
     </androidx.cardview.widget.CardView>
     <TextView
+        android:id="@+id/idUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="22sp"/>
+    <TextView
         android:id="@+id/authorPostsName"
         style="@style/autorPostsName"
         android:layout_width="wrap_content"

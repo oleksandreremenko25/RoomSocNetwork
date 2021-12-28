@@ -5,7 +5,12 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:onClick="userShortClick">
-
+    <TextView
+        android:id="@+id/idUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="22sp"/>
     <ImageView
         android:id="@+id/photoUser"
         android:layout_width="200dp"

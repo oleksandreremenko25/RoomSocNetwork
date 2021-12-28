@@ -30,6 +30,10 @@ class FullUserActivity : AppCompatActivity()  {
     var authorPostsIcon: ImageView? = null
     var authorPostsName: TextView? = null
     var authorPostsLastOnline: TextView? = null
+    var idUser: TextView? = null
+
+
+    var idInt: Int? = null
 
     @Override
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,13 +41,13 @@ class FullUserActivity : AppCompatActivity()  {
         setContentView(R.layout.user_full)
 
         val intent = intent
-        val message: Long = intent.getIntExtra("myKey", 0).toLong()
-
+        val userId: Long = intent.getIntExtra("myKey", 0).toLong()
+        idInt = userId.toInt()
         val application = requireNotNull(this).application
 
         val dataSource = UserDatabase.getInstance(application).userDatabaseDao
 
-        val viewModelFactory = FullUserViewModelFactory(message, dataSource, application)
+        val viewModelFactory = FullUserViewModelFactory(userId, dataSource, application)
 
         fullUserViewModel = ViewModelProvider(this, viewModelFactory).get(FullUserViewModel::class.java)
 
@@ -57,6 +61,7 @@ class FullUserActivity : AppCompatActivity()  {
         authorPostsIcon = findViewById(R.id.authorPostsIcon)
         authorPostsName = findViewById(R.id.authorPostsName)
         authorPostsLastOnline = findViewById(R.id.authorPostsLastOnline)
+        idUser = findViewById(R.id.idUser)
 
 
         observeUsers()
@@ -79,6 +84,7 @@ class FullUserActivity : AppCompatActivity()  {
         aboutUser?.text = oneUser.about
         numberFollowing?.text = oneUser.following.toString()
         numberFollowers?.text = oneUser.followers.toString()
+        idUser?.text = idInt.toString()
 
         val textForNumberPosts: String = getString(R.string.tittlePosts, oneUser.posts.toString())
         numberPosts?.text = textForNumberPosts

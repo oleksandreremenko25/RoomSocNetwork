@@ -19,10 +19,10 @@ class AllUserViewModel (val database: UserDatabaseDao, application: Application)
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-
-            insert(User(name = "Sasha", email = "sasha@gmail.com", hobby = "нічого", lastOnline = "yesterday", photo = "https://pbs.twimg.com/profile_images/2881220369/2b27ac38b43b17a8c5eacfc443ce3384_400x400.jpeg", about = "Почётный доктор около 20 ведущих университетов мира, член многих Академий наук", following = 245, followers = 1290, posts = 46, likes = 162))
-            insert(User(name = "Inna", email = "inna@gmail.com", hobby = "нічого", lastOnline = "yesterday", photo = "https://pbs.twimg.com/profile_images/2881220369/2b27ac38b43b17a8c5eacfc443ce3384_400x400.jpeg", about = "Почётный доктор около 20 ведущих университетов мира, член многих Академий наук", following = 245, followers = 1290, posts = 46, likes = 162))
-
+//
+//            insert(User(name = "Sasha", email = "sasha@gmail.com", hobby = "нічого", lastOnline = "yesterday", photo = "https://pbs.twimg.com/profile_images/2881220369/2b27ac38b43b17a8c5eacfc443ce3384_400x400.jpeg", about = "Почётный доктор около 20 ведущих университетов мира, член многих Академий наук", following = 245, followers = 1290, posts = 46, likes = 162))
+//            insert(User(name = "Inna", email = "inna@gmail.com", hobby = "нічого", lastOnline = "yesterday", photo = "https://pbs.twimg.com/profile_images/2881220369/2b27ac38b43b17a8c5eacfc443ce3384_400x400.jpeg", about = "Почётный доктор около 20 ведущих университетов мира, член многих Академий наук", following = 245, followers = 1290, posts = 46, likes = 162))
+//
             _allUserList.postValue(getAllUser())
 
         }

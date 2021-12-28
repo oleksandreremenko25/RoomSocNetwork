@@ -8,16 +8,25 @@ import com.example.socnetwork.database.UserDatabaseDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class NewUserViewModel (val user: User, val database: UserDatabaseDao, application: Application) : AndroidViewModel(application) {
+class NewUserViewModel (val database: UserDatabaseDao, application: Application) : AndroidViewModel(application) {
 
-    init {
+    fun insert(newUser: User) {
         viewModelScope.launch(Dispatchers.IO) {
-            insert(user)
+            database.insert(newUser)
         }
     }
 
-    private suspend fun insert(newUser: User) {
-        database.insert(newUser)
-    }
+//    fun checkStatusUser(newUser: User): Boolean {
+//        var statusUser: Boolean? = null
+//        viewModelScope.launch(Dispatchers.IO) {
+//            if (database.check(newUser).about.length > 0) {
+//                statusUser = true
+//            } else {
+//                statusUser = false
+//            }
+//
+//        }
+//        return statusUser!!
+//    }
 
 }
