@@ -22,8 +22,19 @@ interface UserDatabaseDao {
 
 
 
-//    @Query("SELECT * from user_table WHERE name = User.")
-//    suspend fun check(user: User): User
+
+
+
+
+    @Query("SELECT * from user_table WHERE name = :userName")
+    suspend fun getUserByName(userName: String): User?
+
+
+
+
+
+
+
 
 
 

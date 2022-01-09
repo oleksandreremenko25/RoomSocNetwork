@@ -21,6 +21,7 @@
         <activity android:name=".allUser.AllUserActivity"></activity>
         <activity android:name=".fullUser.FullUserActivity"></activity>
         <activity android:name=".newUser.NewUserActivity"></activity>
+        <activity android:name=".editUser.EditUserActivity"></activity>
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>

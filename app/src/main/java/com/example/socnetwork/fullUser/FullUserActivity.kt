@@ -14,7 +14,10 @@ import com.example.socnetwork.allUser.AllUserViewModel
 import com.example.socnetwork.allUser.AllUserViewModelFactory
 import com.example.socnetwork.database.User
 import com.example.socnetwork.database.UserDatabase
+import com.example.socnetwork.editUser.EditUserActivity
+
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.user_full.view.*
 
 class FullUserActivity : AppCompatActivity()  {
     private lateinit var fullUserViewModel: FullUserViewModel
@@ -76,6 +79,8 @@ class FullUserActivity : AppCompatActivity()  {
     }
 
     private fun showUser(oneUser: User) {
+        val view: View = layoutInflater.inflate(R.layout.user_full, null)
+
         Picasso.get().load(oneUser.photo).placeholder(R.drawable.no).into(photoUser);
 
         nameUser?.text = oneUser.name
@@ -84,7 +89,8 @@ class FullUserActivity : AppCompatActivity()  {
         aboutUser?.text = oneUser.about
         numberFollowing?.text = oneUser.following.toString()
         numberFollowers?.text = oneUser.followers.toString()
-        idUser?.text = idInt.toString()
+        idUser?.text = oneUser.userId.toString()
+        idInt = oneUser.userId!!.toInt()
 
         val textForNumberPosts: String = getString(R.string.tittlePosts, oneUser.posts.toString())
         numberPosts?.text = textForNumberPosts
@@ -97,4 +103,10 @@ class FullUserActivity : AppCompatActivity()  {
         authorPostsLastOnline?.text = oneUser.lastOnline
     }
 
+    fun userEditClick (views: View) {
+        val intent = Intent(this, EditUserActivity::class.java)
+
+        intent.putExtra("myKey", idInt)
+        startActivity(intent)
+    }
 }

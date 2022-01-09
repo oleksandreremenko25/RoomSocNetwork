@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/mainTittleNew"
+        style="@style/tittle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/mainTittleUserEdit"
+        tools:layout_editor_absoluteX="27dp" />
+
+    <TextView
+        android:id="@+id/nameTittleNew"
+        style="@style/tittle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/mainTittleNew"
+        app:layout_constraintTop_toBottomOf="@+id/mainTittleNew"
+        app:layout_constraintEnd_toEndOf="@+id/mainTittleNew"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="@string/nameTittleNew" />
+
+    <EditText
+        android:id="@+id/nameInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/nameTittleNew"
+        app:layout_constraintTop_toBottomOf="@+id/nameTittleNew"
+        app:layout_constraintEnd_toEndOf="@+id/nameTittleNew"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/nameUserPlaceholder" />
+
+    <TextView
+        android:id="@+id/emailTittleNew"
+        style="@style/tittle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/nameInput"
+        app:layout_constraintTop_toBottomOf="@+id/nameInput"
+        app:layout_constraintEnd_toEndOf="@+id/nameInput"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="@string/emailTittleNew" />
+
+    <EditText
+        android:id="@+id/emailInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/emailTittleNew"
+        app:layout_constraintTop_toBottomOf="@+id/emailTittleNew"
+        app:layout_constraintEnd_toEndOf="@+id/emailTittleNew"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:hint="@string/emailUserPlaceholder" />
+
+    <TextView
+        android:id="@+id/hobbyTittleEdit"
+        style="@style/tittle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/emailInput"
+        app:layout_constraintTop_toBottomOf="@+id/emailInput"
+        app:layout_constraintEnd_toEndOf="@+id/emailInput"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="@string/hobbyTittleEdit" />
+
+    <EditText
+        android:id="@+id/hobbyInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/hobbyTittleEdit"
+        app:layout_constraintTop_toBottomOf="@+id/hobbyTittleEdit"
+        app:layout_constraintEnd_toEndOf="@+id/hobbyTittleEdit"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:ems="10"
+        android:hint="@string/hobbyTittleEdit" />
+
+    <TextView
+        android:id="@+id/aboutTittleEdit"
+        style="@style/tittle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/hobbyInput"
+        app:layout_constraintTop_toBottomOf="@+id/hobbyInput"
+        app:layout_constraintEnd_toEndOf="@+id/hobbyInput"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="@string/aboutTittleEdit" />
+
+    <EditText
+        android:id="@+id/aboutInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/aboutTittleEdit"
+        app:layout_constraintTop_toBottomOf="@+id/aboutTittleEdit"
+        app:layout_constraintEnd_toEndOf="@+id/aboutTittleEdit"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:ems="10"
+        android:hint="@string/hobbyTittleEdit" />
+
+    <Button
+        android:id="@+id/buttonSaveNewUser"
+        style="@style/buttonEditProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        android:onClick="saveUpdateClick"
+        android:text="Save update user"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

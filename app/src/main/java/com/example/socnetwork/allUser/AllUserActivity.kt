@@ -65,7 +65,7 @@ class AllUserActivity  : AppCompatActivity()  {
             view.nameUser.text = (textBeforeNameUser + " " + oneUser.name)
             view.lastOnlinelUser.text = (textBeforeEmailUser + " " + oneUser.lastOnline)
 
-            view.id = oneUser.userId!!.toInt();
+            view.id = oneUser.userId!!.toInt()
             layout.addView(view)
             generatedId++
         }
