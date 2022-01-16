@@ -29,6 +29,7 @@ class AllUserActivity  : AppCompatActivity()  {
         setContentView(R.layout.user_all)
 
         val application = requireNotNull(this).application
+
         val dataSource = UserDatabase.getInstance(application).userDatabaseDao
 
         val viewModelFactory = AllUserViewModelFactory(dataSource, application)
@@ -53,7 +54,7 @@ class AllUserActivity  : AppCompatActivity()  {
         var generatedId: Int = 0
         val context: Context = this
         val textBeforeNameUser: String = context.getString(R.string.beforeNameUser);
-        val textBeforeEmailUser: String = context.getString(R.string.beforeEmailUser);
+        val textBeforeLastOnlineUser: String = context.getString(R.string.beforeLastOnlineUser);
 
         for (oneUser in users) {
             val view: View = layoutInflater.inflate(R.layout.user_short, null)
@@ -63,7 +64,7 @@ class AllUserActivity  : AppCompatActivity()  {
 
             view.idUser.text = oneUser.userId.toString()
             view.nameUser.text = (textBeforeNameUser + " " + oneUser.name)
-            view.lastOnlinelUser.text = (textBeforeEmailUser + " " + oneUser.lastOnline)
+            view.lastOnlinelUser.text = (textBeforeLastOnlineUser + " " + oneUser.lastOnline)
 
             view.id = oneUser.userId!!.toInt()
             layout.addView(view)

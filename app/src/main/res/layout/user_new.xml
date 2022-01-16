@@ -59,12 +59,113 @@
         android:layout_marginRight="16dp"
         android:layout_marginLeft="16dp"
         android:text="@string/emailTittleNew" />
+
+    <EditText
+        android:id="@+id/emailInputNew"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/emailTittleNew"
+        app:layout_constraintTop_toBottomOf="@+id/emailTittleNew"
+        app:layout_constraintEnd_toEndOf="@+id/emailTittleNew"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:hint="@string/emailUserPlaceholder" />
+
+    <TextView
+        android:id="@+id/hobbyTittleNew"
+        style="@style/tittle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/emailInputNew"
+        app:layout_constraintTop_toBottomOf="@+id/emailInputNew"
+        app:layout_constraintEnd_toEndOf="@+id/emailInputNew"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="@string/hobbyTittleNew" />
+
+    <EditText
+        android:id="@+id/hobbyInputNew"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/hobbyTittleNew"
+        app:layout_constraintTop_toBottomOf="@+id/hobbyTittleNew"
+        app:layout_constraintEnd_toEndOf="@+id/hobbyTittleNew"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/emailUserPlaceholder" />
+
+    <TextView
+        android:id="@+id/photoTittleNew"
+        style="@style/tittle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/hobbyInputNew"
+        app:layout_constraintTop_toBottomOf="@+id/hobbyInputNew"
+        app:layout_constraintEnd_toEndOf="@+id/hobbyInputNew"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="@string/photoTittleNew" />
+
+    <EditText
+        android:id="@+id/photoInputNew"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/photoTittleNew"
+        app:layout_constraintTop_toBottomOf="@+id/photoTittleNew"
+        app:layout_constraintEnd_toEndOf="@+id/photoTittleNew"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/photoUserPlaceholder" />
+
+    <TextView
+        android:id="@+id/aboutTittleNew"
+        style="@style/tittle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/photoInputNew"
+        app:layout_constraintTop_toBottomOf="@+id/photoInputNew"
+        app:layout_constraintEnd_toEndOf="@+id/photoInputNew"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="@string/aboutTittleNew" />
+
+    <EditText
+        android:id="@+id/aboutInputNew"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/aboutTittleNew"
+        app:layout_constraintTop_toBottomOf="@+id/aboutTittleNew"
+        app:layout_constraintEnd_toEndOf="@+id/aboutTittleNew"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/aboutUserPlaceholder" />
+
     <Button
         android:id="@+id/buttonSaveNewUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/aboutInputNew"
+        app:layout_constraintTop_toBottomOf="@+id/aboutInputNew"
+        app:layout_constraintEnd_toEndOf="@+id/aboutInputNew"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
         android:onClick="saveNewUserClick"
-        android:text="Save new user">
+        android:text="Save new user"/>
 
-    </Button>
 </androidx.constraintlayout.widget.ConstraintLayout>

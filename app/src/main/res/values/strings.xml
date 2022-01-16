@@ -40,7 +40,8 @@
 
     <string name="nameUserPlaceholder">Name</string>
     <string name="emailUserPlaceholder">Email</string>
-
+    <string name="photoUserPlaceholder">Link for photo</string>
+    <string name="aboutUserPlaceholder">About</string>
     <string name="textButtonAddNewUser">Add New User</string>
 
 

@@ -24,7 +24,6 @@ class EditUserActivity : AppCompatActivity()   {
     var hobbyInput: EditText? = null
     var aboutInput: EditText? = null
     var editUser: User? = null
-
     var idInt: Int? = null
 
     @Override
@@ -66,7 +65,6 @@ class EditUserActivity : AppCompatActivity()   {
 
     private fun editUser(oneUser: User) {
         val view: View = layoutInflater.inflate(R.layout.user_edit, null)
-
         nameInput?.setText(oneUser.name)
         emailInput?.setText(oneUser.email)
         hobbyInput?.setText(oneUser.hobby)
@@ -76,10 +74,11 @@ class EditUserActivity : AppCompatActivity()   {
     fun saveUpdateClick(views: View) {
         val intent = Intent(this, AllUserActivity::class.java)
         editUser!!.name = nameInput!!.getText().toString()
+        editUser!!.email = emailInput!!.getText().toString()
+        editUser!!.hobby = hobbyInput!!.getText().toString()
+        editUser!!.about = aboutInput!!.getText().toString()
         editUserViewModel.update(editUser!!)
         startActivity(intent)
 
     }
-
-
 }

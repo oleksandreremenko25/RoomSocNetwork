@@ -13,7 +13,7 @@ class NewUserViewModel (val database: UserDatabaseDao, application: Application)
 
     fun insert(newUser: User) {
         viewModelScope.launch(Dispatchers.IO) {
-            //Перевіряє чи існує в юазі даних такий користувач і якщо його
+            //Перевіряє чи існує в базі даних такий користувач і якщо його
             // немає то getUserByName повертає null
             if(database.getUserByName(newUser.name) == null) {
                 database.insert(newUser)

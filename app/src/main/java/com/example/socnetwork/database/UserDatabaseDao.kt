@@ -18,26 +18,8 @@ interface UserDatabaseDao {
     @Query("SELECT * from user_table WHERE userId = :key")
     suspend fun get(key: Long): User?
 
-
-
-
-
-
-
-
-
     @Query("SELECT * from user_table WHERE name = :userName")
     suspend fun getUserByName(userName: String): User?
-
-
-
-
-
-
-
-
-
-
 
     @Query("DELETE FROM user_table")
     suspend fun clear()

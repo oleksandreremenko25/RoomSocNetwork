@@ -34,8 +34,6 @@ class FullUserActivity : AppCompatActivity()  {
     var authorPostsName: TextView? = null
     var authorPostsLastOnline: TextView? = null
     var idUser: TextView? = null
-
-
     var idInt: Int? = null
 
     @Override
@@ -44,8 +42,11 @@ class FullUserActivity : AppCompatActivity()  {
         setContentView(R.layout.user_full)
 
         val intent = intent
+
         val userId: Long = intent.getIntExtra("myKey", 0).toLong()
+
         idInt = userId.toInt()
+
         val application = requireNotNull(this).application
 
         val dataSource = UserDatabase.getInstance(application).userDatabaseDao
@@ -65,7 +66,6 @@ class FullUserActivity : AppCompatActivity()  {
         authorPostsName = findViewById(R.id.authorPostsName)
         authorPostsLastOnline = findViewById(R.id.authorPostsLastOnline)
         idUser = findViewById(R.id.idUser)
-
 
         observeUsers()
     }

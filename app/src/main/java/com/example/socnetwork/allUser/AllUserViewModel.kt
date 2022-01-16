@@ -13,14 +13,13 @@ import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-
 class AllUserViewModel (val database: UserDatabaseDao, application: Application) : AndroidViewModel(application) {
     private var _allUserList = MutableLiveData<List<User>>()
     var allUserList: LiveData<List<User>> = _allUserList
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            
+
             // перевірка чи існують якісь записи в базі даних і
             // якщо їх не існує тоді виконується запис в базу даних даниз
             // з локального файлу
