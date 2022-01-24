@@ -24,7 +24,7 @@ class AllUserViewModel (val database: UserDatabaseDao, application: Application)
             // якщо їх не існує тоді виконується запис в базу даних даниз
             // з локального файлу
             if(database.getAllUser().isEmpty()) {
-                for (oneUser in UserData().usersList) {
+                for (oneUser in UserData.usersList) {
                     insert(oneUser)
                 }
             }

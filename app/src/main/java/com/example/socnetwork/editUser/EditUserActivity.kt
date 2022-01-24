@@ -15,6 +15,7 @@ import com.example.socnetwork.fullUser.FullUserViewModel
 import com.example.socnetwork.fullUser.FullUserViewModelFactory
 import com.squareup.picasso.Picasso
 import androidx.lifecycle.Observer
+import com.example.socnetwork.fullUser.FullUserActivity
 import kotlinx.android.synthetic.main.user_edit.view.*
 
 class EditUserActivity : AppCompatActivity()   {
@@ -33,7 +34,7 @@ class EditUserActivity : AppCompatActivity()   {
 
         val intent = intent
 
-        val userId: Long = intent.getIntExtra("myKey", 0).toLong()
+        val userId: Long = intent.getIntExtra("keyUserId", 0).toLong()
 
         idInt = userId.toInt()
 
@@ -64,21 +65,23 @@ class EditUserActivity : AppCompatActivity()   {
     }
 
     private fun editUser(oneUser: User) {
-        val view: View = layoutInflater.inflate(R.layout.user_edit, null)
         nameInput?.setText(oneUser.name)
         emailInput?.setText(oneUser.email)
         hobbyInput?.setText(oneUser.hobby)
         aboutInput?.setText(oneUser.about)
     }
 
-    fun saveUpdateClick(views: View) {
-        val intent = Intent(this, AllUserActivity::class.java)
-        editUser!!.name = nameInput!!.getText().toString()
-        editUser!!.email = emailInput!!.getText().toString()
-        editUser!!.hobby = hobbyInput!!.getText().toString()
-        editUser!!.about = aboutInput!!.getText().toString()
+    fun saveUpdateClick(view: View) {
+        val intent = Intent(this, FullUserActivity::class.java)
+        editUser!!.name = nameInput!!.text.toString()
+        editUser!!.email = emailInput!!.text.toString()
+        editUser!!.hobby = hobbyInput!!.text.toString()
+        editUser!!.about = aboutInput!!.text.toString()
         editUserViewModel.update(editUser!!)
+        val idUser: Int = editUser!!.userId!!.toInt()
+        intent.putExtra("keyUserId", idUser)
         startActivity(intent)
-
     }
+
+
 }

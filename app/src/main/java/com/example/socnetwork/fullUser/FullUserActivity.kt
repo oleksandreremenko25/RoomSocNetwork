@@ -43,7 +43,7 @@ class FullUserActivity : AppCompatActivity()  {
 
         val intent = intent
 
-        val userId: Long = intent.getIntExtra("myKey", 0).toLong()
+        val userId: Long = intent.getIntExtra("keyUserId", 0).toLong()
 
         idInt = userId.toInt()
 
@@ -106,7 +106,7 @@ class FullUserActivity : AppCompatActivity()  {
     fun userEditClick (views: View) {
         val intent = Intent(this, EditUserActivity::class.java)
 
-        intent.putExtra("myKey", idInt)
+        intent.putExtra("keyUserId", idInt)
         startActivity(intent)
     }
 }

@@ -75,7 +75,7 @@ class AllUserActivity  : AppCompatActivity()  {
     fun userShortClick(views: View) {
         val intent = Intent(this, FullUserActivity::class.java)
         val idUser: Int = views.id
-        intent.putExtra("myKey", idUser)
+        intent.putExtra("keyUserId", idUser)
         startActivity(intent)
     }
 

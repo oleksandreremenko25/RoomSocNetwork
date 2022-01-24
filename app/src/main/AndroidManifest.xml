@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SocNetwork">
         <activity
-            android:name=".MainActivity"
+            android:name=".allUser.AllUserActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,7 +18,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".allUser.AllUserActivity"></activity>
         <activity android:name=".fullUser.FullUserActivity"></activity>
         <activity android:name=".newUser.NewUserActivity"></activity>
         <activity android:name=".editUser.EditUserActivity"></activity>

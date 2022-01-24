@@ -2,7 +2,7 @@ package com.example.socnetwork
 
 import com.example.socnetwork.database.User
 
-class UserData() {
+object UserData {
      var usersList = listOf(
         User(name = "Sasha", email = "sasha@gmail.com", hobby = "нічого", lastOnline = "yesterday", photo = "https://pbs.twimg.com/profile_images/2881220369/2b27ac38b43b17a8c5eacfc443ce3384_400x400.jpeg", about = "Почётный доктор около 20 ведущих университетов мира, член многих Академий наук", following = 245, followers = 1290, posts = 46, likes = 162),
         User(name = "Inna", email = "inna@gmail.com", hobby = "читання книги", lastOnline = "two day ago", photo = "https://cdnimg.rg.ru/img/content/177/24/41/1_d_850.jpg", about = "NNA — румынская певица, исполнительница танцевальной музыки. Инна начала работу с Play & Win в 2008 году.", following = 245, followers = 1290, posts = 46, likes = 162),

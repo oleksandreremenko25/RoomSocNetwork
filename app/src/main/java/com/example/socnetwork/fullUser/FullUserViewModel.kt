@@ -20,6 +20,7 @@ class FullUserViewModel (var searchIdUser: Long, val database: UserDatabaseDao, 
         }
     }
 
+
     suspend fun getUser(id: Long): User? {
         return database.getUser(id)
     }
