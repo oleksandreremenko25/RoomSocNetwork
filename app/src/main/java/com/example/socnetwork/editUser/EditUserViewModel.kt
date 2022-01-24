@@ -10,14 +10,19 @@ import com.example.socnetwork.database.UserDatabaseDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class EditUserViewModel (var searchIdUser: Long, val database: UserDatabaseDao, application: Application) : AndroidViewModel(application) {
+class EditUserViewModel (val database: UserDatabaseDao, application: Application) : AndroidViewModel(application) {
     private var _user = MutableLiveData<User>()
     val user: LiveData<User> = _user
+    var locIdUser: Long? = null
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            _user.postValue(getUser(searchIdUser))
+            _user.postValue(getUser(locIdUser!!))
         }
+    }
+
+    fun setUserId(searchIdUser: Long) {
+        locIdUser = searchIdUser
     }
 
     suspend fun getUser(id: Long): User? {

@@ -51,7 +51,7 @@ class FullUserActivity : AppCompatActivity()  {
 
         val dataSource = UserDatabase.getInstance(application).userDatabaseDao
 
-        val viewModelFactory = FullUserViewModelFactory(userId, dataSource, application)
+        val viewModelFactory = FullUserViewModelFactory(dataSource, application)
 
         fullUserViewModel = ViewModelProvider(this, viewModelFactory).get(FullUserViewModel::class.java)
 
@@ -66,6 +66,8 @@ class FullUserActivity : AppCompatActivity()  {
         authorPostsName = findViewById(R.id.authorPostsName)
         authorPostsLastOnline = findViewById(R.id.authorPostsLastOnline)
         idUser = findViewById(R.id.idUser)
+
+        fullUserViewModel.setUserId(userId)
 
         observeUsers()
     }

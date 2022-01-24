@@ -6,12 +6,12 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.socnetwork.database.UserDatabaseDao
 import com.example.socnetwork.editUser.EditUserViewModel
 
-class EditUserViewModelFactory (var editIdUser: Long, private val dataSource: UserDatabaseDao, private val application: Application) : ViewModelProvider.Factory {
+class EditUserViewModelFactory (private val dataSource: UserDatabaseDao, private val application: Application) : ViewModelProvider.Factory {
 
     @Suppress("unchecked_cast")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(EditUserViewModel::class.java)) {
-            return EditUserViewModel(editIdUser, dataSource, application) as T
+            return EditUserViewModel(dataSource, application) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

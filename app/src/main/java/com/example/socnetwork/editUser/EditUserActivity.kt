@@ -42,7 +42,7 @@ class EditUserActivity : AppCompatActivity()   {
 
         val dataSource = UserDatabase.getInstance(application).userDatabaseDao
 
-        val viewModelFactory = EditUserViewModelFactory(userId, dataSource, application)
+        val viewModelFactory = EditUserViewModelFactory(dataSource, application)
 
         editUserViewModel = ViewModelProvider(this, viewModelFactory).get(EditUserViewModel::class.java)
 
@@ -51,6 +51,7 @@ class EditUserActivity : AppCompatActivity()   {
         hobbyInput = findViewById(R.id.hobbyInput)
         aboutInput = findViewById(R.id.aboutInput)
 
+        editUserViewModel.setUserId(userId)
         observeUsers()
 
     }
