@@ -100,14 +100,42 @@
         android:ems="10"
         android:hint="@string/hobbyTittleEdit" />
 
+
+
     <TextView
-        android:id="@+id/aboutTittleEdit"
+        android:id="@+id/photoTittleEdit"
         style="@style/tittle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@+id/hobbyInput"
         app:layout_constraintTop_toBottomOf="@+id/hobbyInput"
         app:layout_constraintEnd_toEndOf="@+id/hobbyInput"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="@string/photoTittleEdit" />
+
+    <EditText
+        android:id="@+id/photoInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/photoTittleEdit"
+        app:layout_constraintTop_toBottomOf="@+id/photoTittleEdit"
+        app:layout_constraintEnd_toEndOf="@+id/photoTittleEdit"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:ems="10"
+        android:hint="@string/photoUserPlaceholder" />
+
+    <TextView
+        android:id="@+id/aboutTittleEdit"
+        style="@style/tittle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/photoInput"
+        app:layout_constraintTop_toBottomOf="@+id/photoInput"
+        app:layout_constraintEnd_toEndOf="@+id/photoInput"
         android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginLeft="16dp"

@@ -23,6 +23,7 @@ class EditUserActivity : AppCompatActivity()   {
     var nameInput: EditText? = null
     var emailInput: EditText? = null
     var hobbyInput: EditText? = null
+    var photoInput: EditText? = null
     var aboutInput: EditText? = null
     var editUser: User? = null
     var idInt: Int? = null
@@ -49,6 +50,7 @@ class EditUserActivity : AppCompatActivity()   {
         nameInput = findViewById(R.id.nameInput)
         emailInput = findViewById(R.id.emailInput)
         hobbyInput = findViewById(R.id.hobbyInput)
+        photoInput = findViewById(R.id.photoInput)
         aboutInput = findViewById(R.id.aboutInput)
 
         editUserViewModel.setUserId(userId)
@@ -69,6 +71,7 @@ class EditUserActivity : AppCompatActivity()   {
         nameInput?.setText(oneUser.name)
         emailInput?.setText(oneUser.email)
         hobbyInput?.setText(oneUser.hobby)
+        photoInput?.setText(oneUser.photo)
         aboutInput?.setText(oneUser.about)
     }
 
@@ -77,6 +80,7 @@ class EditUserActivity : AppCompatActivity()   {
         editUser!!.name = nameInput!!.text.toString()
         editUser!!.email = emailInput!!.text.toString()
         editUser!!.hobby = hobbyInput!!.text.toString()
+        editUser!!.photo = photoInput!!.text.toString()
         editUser!!.about = aboutInput!!.text.toString()
         editUserViewModel.update(editUser!!)
         val idUser: Int = editUser!!.userId!!.toInt()
