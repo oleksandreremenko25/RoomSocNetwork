@@ -13,16 +13,9 @@ import kotlinx.coroutines.launch
 class EditUserViewModel (val database: UserDatabaseDao, application: Application) : AndroidViewModel(application) {
     private var _user = MutableLiveData<User>()
     val user: LiveData<User> = _user
-    var locIdUser: Long? = null
 
-    init {
-        viewModelScope.launch(Dispatchers.IO) {
-            _user.postValue(getUser(locIdUser!!))
-        }
-    }
-
-    fun setUserId(searchIdUser: Long) {
-        locIdUser = searchIdUser
+    fun setUserId(searchIdUser: Long) = viewModelScope.launch(Dispatchers.IO){
+        _user.postValue(getUser(searchIdUser))
     }
 
     suspend fun getUser(id: Long): User? {

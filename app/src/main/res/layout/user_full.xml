@@ -1,186 +1,191 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-        <ImageView
-            android:id="@+id/photoUser"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:layout_marginBottom="16dp"
-            android:scaleType="centerCrop" />
-    </androidx.cardview.widget.CardView>
-    <TextView
-        android:id="@+id/nameUser"
-        style="@style/fullUserAboutName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="Name"
-        android:textSize="22sp"
-        app:layout_constrainedWidth="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
-        app:layout_constraintTop_toTopOf="parent" />
-    <TextView
-        android:id="@+id/aboutUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="about"
-        android:textSize="22sp"
-        app:layout_constrainedHeight="true"
-        app:layout_constrainedWidth="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
-        app:layout_constraintTop_toBottomOf="@+id/nameUser" />
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="bottom"
-        app:constraint_referenced_ids="cardView,aboutUser" />
-    <!--    editFolWrap  -->
-    <Button
-        android:id="@+id/buttonEdit"
-        style="@style/buttonEditProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/buttonEdit"
-        app:layout_constraintEnd_toStartOf="@+id/tittleFollowing"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/barrier7"
-        android:onClick="userEditClick"/>
-    <TextView
-        android:id="@+id/numberFollowing"
-        style="@style/numberFollowing"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="numFollowing"
-        app:layout_constraintStart_toStartOf="@+id/tittleFollowing"
-        app:layout_constraintTop_toTopOf="@+id/buttonEdit" />
-    <TextView
-        android:id="@+id/tittleFollowing"
-        style="@style/tittleFollowing"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/tittleFollowing"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonEdit"
-        app:layout_constraintEnd_toStartOf="@+id/tittleFollowers"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/buttonEdit" />
-    <TextView
-        android:id="@+id/numberFollowers"
-        style="@style/numberFollowers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="numFollowers"
-        app:layout_constraintStart_toStartOf="@+id/tittleFollowers"
-        app:layout_constraintTop_toTopOf="@+id/buttonEdit" />
-    <TextView
-        android:id="@+id/tittleFollowers"
-        style="@style/tittleFollowers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/tittleFollowers"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonEdit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tittleFollowing" />
-    <!--  numberPostsLikesWrap  -->
-    <TextView
-        android:id="@+id/numberPosts"
-        style="@style/numberPostsWrap"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/corner_posts"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:text="numPosts"
-        app:layout_constraintEnd_toStartOf="@+id/numberLikes"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonEdit" />
-    <TextView
-        android:id="@+id/numberLikes"
-        style="@style/numberLikesWrap"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/corner_likes"
-        android:layout_marginEnd="16dp"
-        android:text="numLikes"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toEndOf="@+id/numberPosts"
-        app:layout_constraintTop_toTopOf="@+id/numberPosts" />
-    <LinearLayout
-        android:id="@+id/linearLayout5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/line"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/numberPosts"
-        tools:layout_editor_absoluteX="0dp" />
-    <!--  listPosts  -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        app:cardCornerRadius="50dp"
-        app:cardElevation="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout5">
-        <ImageView
-            android:id="@+id/authorPostsIcon"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:scaleType="centerCrop" />
-    </androidx.cardview.widget.CardView>
-    <TextView
-        android:id="@+id/idUser"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:textSize="22sp"/>
-    <TextView
-        android:id="@+id/authorPostsName"
-        style="@style/autorPostsName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="autorPostsName"
-        app:layout_constraintBottom_toBottomOf="@+id/cardView2"
-        app:layout_constraintStart_toEndOf="@+id/cardView2"
-        app:layout_constraintTop_toTopOf="@+id/cardView2" />
-    <TextView
-        android:id="@+id/authorPostsLastOnline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="autorPostsLastOnline"
-        app:layout_constraintBottom_toBottomOf="@+id/authorPostsName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/authorPostsName" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <ImageView
+                android:id="@+id/photoUser"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginBottom="16dp"
+                android:scaleType="centerCrop" />
+        </androidx.cardview.widget.CardView>
+        <TextView
+            android:id="@+id/nameUser"
+            style="@style/fullUserAboutName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="Name"
+            android:textSize="22sp"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cardView"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/aboutUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="about"
+            android:textSize="22sp"
+            app:layout_constrainedHeight="true"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cardView"
+            app:layout_constraintTop_toBottomOf="@+id/nameUser" />
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="cardView,aboutUser" />
+        <!--    editFolWrap  -->
+        <Button
+            android:id="@+id/buttonEdit"
+            style="@style/buttonEditProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/buttonEdit"
+            app:layout_constraintEnd_toStartOf="@+id/tittleFollowing"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/barrier7"
+            android:onClick="userEditClick"/>
+        <TextView
+            android:id="@+id/numberFollowing"
+            style="@style/numberFollowing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="numFollowing"
+            app:layout_constraintStart_toStartOf="@+id/tittleFollowing"
+            app:layout_constraintTop_toTopOf="@+id/buttonEdit" />
+        <TextView
+            android:id="@+id/tittleFollowing"
+            style="@style/tittleFollowing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tittleFollowing"
+            app:layout_constraintBottom_toBottomOf="@+id/buttonEdit"
+            app:layout_constraintEnd_toStartOf="@+id/tittleFollowers"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/buttonEdit" />
+        <TextView
+            android:id="@+id/numberFollowers"
+            style="@style/numberFollowers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="numFollowers"
+            app:layout_constraintStart_toStartOf="@+id/tittleFollowers"
+            app:layout_constraintTop_toTopOf="@+id/buttonEdit" />
+        <TextView
+            android:id="@+id/tittleFollowers"
+            style="@style/tittleFollowers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tittleFollowers"
+            app:layout_constraintBottom_toBottomOf="@+id/buttonEdit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tittleFollowing" />
+        <!--  numberPostsLikesWrap  -->
+        <TextView
+            android:id="@+id/numberPosts"
+            style="@style/numberPostsWrap"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/corner_posts"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:text="numPosts"
+            app:layout_constraintEnd_toStartOf="@+id/numberLikes"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonEdit" />
+        <TextView
+            android:id="@+id/numberLikes"
+            style="@style/numberLikesWrap"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/corner_likes"
+            android:layout_marginEnd="16dp"
+            android:text="numLikes"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@+id/numberPosts"
+            app:layout_constraintTop_toTopOf="@+id/numberPosts" />
+        <LinearLayout
+            android:id="@+id/linearLayout5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/line"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/numberPosts"
+            tools:layout_editor_absoluteX="0dp" />
+        <!--  listPosts  -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="50dp"
+            app:cardElevation="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/linearLayout5">
+            <ImageView
+                android:id="@+id/authorPostsIcon"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:scaleType="centerCrop" />
+        </androidx.cardview.widget.CardView>
+        <TextView
+            android:id="@+id/idUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="22sp"/>
+        <TextView
+            android:id="@+id/authorPostsName"
+            style="@style/autorPostsName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="autorPostsName"
+            app:layout_constraintBottom_toBottomOf="@+id/cardView2"
+            app:layout_constraintStart_toEndOf="@+id/cardView2"
+            app:layout_constraintTop_toTopOf="@+id/cardView2" />
+        <TextView
+            android:id="@+id/authorPostsLastOnline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="autorPostsLastOnline"
+            app:layout_constraintBottom_toBottomOf="@+id/authorPostsName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/authorPostsName" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.socnetwork.R
 import com.example.socnetwork.allUser.AllUserActivity
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
@@ -27,6 +28,7 @@ class EditUserActivity : AppCompatActivity()   {
     var aboutInput: EditText? = null
     var editUser: User? = null
     var idInt: Int? = null
+    var buttonSaveNewUser: Button? = null
 
     @Override
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,10 +54,14 @@ class EditUserActivity : AppCompatActivity()   {
         hobbyInput = findViewById(R.id.hobbyInput)
         photoInput = findViewById(R.id.photoInput)
         aboutInput = findViewById(R.id.aboutInput)
+        buttonSaveNewUser = findViewById(R.id.buttonSaveNewUser)
 
         editUserViewModel.setUserId(userId)
         observeUsers()
 
+        buttonSaveNewUser?.setOnClickListener {
+            saveUpdateClick()
+        }
     }
 
     private fun observeUsers() {
@@ -75,7 +81,7 @@ class EditUserActivity : AppCompatActivity()   {
         aboutInput?.setText(oneUser.about)
     }
 
-    fun saveUpdateClick(view: View) {
+    fun saveUpdateClick() {
         val intent = Intent(this, FullUserActivity::class.java)
         editUser!!.name = nameInput!!.text.toString()
         editUser!!.email = emailInput!!.text.toString()
@@ -87,6 +93,5 @@ class EditUserActivity : AppCompatActivity()   {
         intent.putExtra("keyUserId", idUser)
         startActivity(intent)
     }
-
 
 }

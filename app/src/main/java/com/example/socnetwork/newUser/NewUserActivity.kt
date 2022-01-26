@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import android.view.View
+import android.widget.Button
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import com.example.socnetwork.*
@@ -16,12 +17,12 @@ import com.example.socnetwork.fullUser.FullUserViewModel
 import com.example.socnetwork.fullUser.FullUserViewModelFactory
 
 class NewUserActivity  : AppCompatActivity()  {
-
     var nameNewUser: EditText? = null
     var emailInputNew: EditText? = null
     var hobbyInputNew: EditText? = null
     var photoInputNew: EditText? = null
     var aboutInputNew: EditText? = null
+    var buttonSaveNewUser: Button? = null
 
     @Override
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,10 +34,14 @@ class NewUserActivity  : AppCompatActivity()  {
         hobbyInputNew = findViewById(R.id.hobbyInputNew)
         photoInputNew = findViewById(R.id.photoInputNew)
         aboutInputNew = findViewById(R.id.aboutInputNew)
+        buttonSaveNewUser = findViewById(R.id.buttonSaveNewUser)
 
+        buttonSaveNewUser?.setOnClickListener {
+            saveNewUserClick()
+        }
     }
 
-    fun saveNewUserClick(view: View) {
+    fun saveNewUserClick() {
 
         val application = requireNotNull(this).application
 
@@ -44,11 +49,9 @@ class NewUserActivity  : AppCompatActivity()  {
 
         val viewModelFactory = NewUserViewModelFactory(dataSource, application)
 
-
         var newUserViewModel = ViewModelProvider(this, viewModelFactory).get(NewUserViewModel::class.java)
 
         val newUser: User = User(
-
             name = nameNewUser?.text.toString(),
             email = emailInputNew?.text.toString(),
             hobby = hobbyInputNew?.text.toString(),
@@ -60,7 +63,6 @@ class NewUserActivity  : AppCompatActivity()  {
             posts = 46,
             likes = 162
         )
-
 
         newUserViewModel.insert(newUser)
 
