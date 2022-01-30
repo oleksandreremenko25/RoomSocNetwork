@@ -17,11 +17,16 @@ import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import com.example.socnetwork.fullUser.FullUserActivity
+import com.example.socnetwork.editUser.EditUserActivity
 import android.content.Intent
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.example.socnetwork.newUser.NewUserActivity
 
 class AllUserActivity  : AppCompatActivity()  {
     private lateinit var allUserViewModel: AllUserViewModel
+    var allSleep: RecyclerView? = null
+    var idUser: TextView? = null
 
     @Override
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,52 +41,53 @@ class AllUserActivity  : AppCompatActivity()  {
 
         allUserViewModel = ViewModelProvider(this, viewModelFactory).get(AllUserViewModel::class.java)
 
-        observeUsers()
-    }
+        // Файлу RecyclerView потрібно знати який адаптер використовувати,
+        // щоб отримати утримувачі перегляду.
+        val adapter = AllUserAdapter()
 
-
-
-    private fun observeUsers() {
+        // Створіть спостерігача для allUserList змінної.
         allUserViewModel.allUserList.observe(this, Observer { users ->
+            // Усередині спостерігача, коли отримується ненульове значення (users),
+            // призначте значення адаптеру data. Це завершений код для спостерігача та налаштування даних:
             users?.let {
-                showUsers(it)
+                adapter.data = it
             }
         })
-    }
 
-    private fun showUsers(users: List<User>) {
+        // Отримання посилання на обєк звязування (RecyclerView в який
+        // потім будуть вкидуватись макети user_short)
+        allSleep = findViewById(R.id.all_sleep)
 
-        var generatedId: Int = 0
-        val context: Context = this
-        val textBeforeNameUser: String = context.getString(R.string.beforeNameUser);
-        val textBeforeLastOnlineUser: String = context.getString(R.string.beforeLastOnlineUser);
-
-        for (oneUser in users) {
-            val view: View = layoutInflater.inflate(R.layout.user_short, null)
-            val layout = findViewById<LinearLayout>(R.id.users_list_wrapper)
-
-            Picasso.get().load(oneUser.photo).placeholder(R.drawable.no).into(view.photoUser);
-
-            view.idUser.text = oneUser.userId.toString()
-            view.nameUser.text = (textBeforeNameUser + " " + oneUser.name)
-            view.lastOnlinelUser.text = (textBeforeLastOnlineUser + " " + oneUser.lastOnline)
-
-            view.id = oneUser.userId!!.toInt()
-            layout.addView(view)
-            generatedId++
-        }
+        // Після того як отримали посилання на об’єкт зв’язування, зв’язуєм RecyclerView з adapter
+        allSleep?.adapter = adapter
     }
 
     fun userShortClick(views: View) {
+
         val intent = Intent(this, FullUserActivity::class.java)
+
+        idUser = findViewById(R.id.idUser)
+
+        // зчитуєм id номер user для його передачі в FullUserActivity
         val idUser: Int = views.id
+
         intent.putExtra("keyUserId", idUser)
+
         startActivity(intent)
     }
 
+
+
+
+
+
+
+
+
+
+
     fun toNewUserClick(views: View) {
         val intent = Intent(this, NewUserActivity::class.java)
-
         startActivity(intent)
     }
 }

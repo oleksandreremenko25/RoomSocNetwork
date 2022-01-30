@@ -68,7 +68,7 @@ class FullUserActivity : AppCompatActivity()  {
         idUser = findViewById(R.id.idUser)
 
         fullUserViewModel.setUserId(userId)
-
+        nameUser?.text = "oneUser.name"
         observeUsers()
     }
 
@@ -81,7 +81,7 @@ class FullUserActivity : AppCompatActivity()  {
     }
 
     private fun showUser(oneUser: User) {
-        val view: View = layoutInflater.inflate(R.layout.user_full, null)
+//        val view: View = layoutInflater.inflate(R.layout.user_full, null)
 
         Picasso.get().load(oneUser.photo).placeholder(R.drawable.no).into(photoUser);
 

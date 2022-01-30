@@ -16,11 +16,15 @@
         <item name="android:textColor">@color/black</item>
         <item name="android:textStyle">bold|normal</item>
     </style>
-    <style name="buttonEditProfile" parent="Widget.MaterialComponents.Button.OutlinedButton">
+    <style name="buttonMain" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="cornerSize">8dp</item>
         <item name="strokeColor">@color/primary_red</item>
         <item name="android:textColor">@color/primary_red</item>
         <item name="strokeWidth">2dp</item>
+    </style>
+    <style name="buttonNewUserClick" parent="buttonMain">
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:layout_marginBottom">15dp</item>
     </style>
     <style name="numberFollowing">
         <item name="android:textColor">@color/primary_black</item>
@@ -64,5 +68,11 @@
         <item name="android:textColor">@color/black</item>
         <item name="android:textStyle">bold|normal</item>
         <item name="android:textSize">20sp</item>
+    </style>
+<!-- all_user -->
+    <style name="all_sleep">
+        <item name="backgroundColor">@color/blue</item>
+        <item name="background">@color/blue</item>
+        <item name="color">@color/blue</item>
     </style>
 </resources>
