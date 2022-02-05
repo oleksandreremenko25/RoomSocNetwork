@@ -33,6 +33,10 @@ android {
     viewBinding {
         enabled = true
     }
+    // Enables data binding.
+    buildFeatures {
+        dataBinding true
+    }
 }
 
 dependencies {

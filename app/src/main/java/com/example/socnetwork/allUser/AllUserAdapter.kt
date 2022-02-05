@@ -1,41 +1,27 @@
 package com.example.socnetwork.allUser
 
-import android.content.Context
-import android.net.Uri
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.net.toUri
+import androidx.annotation.NonNull
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.socnetwork.database.User
 import com.example.socnetwork.R
-import com.example.socnetwork.databinding.UserAllBinding
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.user_short.view.*
+import androidx.recyclerview.widget.ListAdapter
+import com.example.socnetwork.databinding.UserShortBinding
 
-class AllUserAdapter : RecyclerView.Adapter<AllUserAdapter.MyViewHolder>()  {
-    // змінна для зберігання даних. Щоб розповісти RecyclerView коли дані, які він відображає,
-    // змінилися, додайте спеціальний сетер до data змінної, яка знаходиться у верхній частині
-    // AllUserAdapter класу. У сетері дайте data нове значення, а потім зателефонуйте notifyDataSetChanged()
-    // щоб запустити перемалювання списку з новими даними.
-    var data =  listOf<User>()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
-
-    // Файл RecyclerView потрібно знати, скільки елементів має адаптер для відображення,
-    // і він робить це за допомогою виклику getItemCount()
-    override fun getItemCount() = data.size
+class AllUserAdapter : ListAdapter<User, AllUserAdapter.MyViewHolder>(AllUserDiffCallback()) {
 
     // onBindViewHolder() - ця функція викликається RecyclerView щоб відобразити дані
     // для одного елемента списку у вказаному місці. Отже, onBindViewHolder() метод
     // приймає два аргументи: власник подання та позицію даних, які потрібно зв’язувати.
     // Для цього додатка тримач є TextItemViewHolder, а позиція — це позиція у списку
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val item = data[position]
+        val item = getItem(position)
 
         holder.bind(item)
     }
@@ -50,14 +36,14 @@ class AllUserAdapter : RecyclerView.Adapter<AllUserAdapter.MyViewHolder>()  {
 
     // View - це елемент який буде потім розмножений
     // для заповнення RecyclerView в файлі xml
-    class MyViewHolder private constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class MyViewHolder private constructor(val binding: UserShortBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(oneUser: User) {
-            itemView.id = oneUser.userId!!.toInt()
-            itemView.idUser.text = oneUser.userId.toString()
-            Picasso.get().load(oneUser.photo).placeholder(R.drawable.no).into(itemView.photoUser);
-            itemView.nameUser.text = oneUser.name
-            itemView.lastOnlinelUser.text = oneUser.lastOnline
+//            Picasso.get().load(oneUser.photo).placeholder(R.drawable.no).into(itemView.photoUser);
+
+            binding.user = oneUser
+
+            binding.executePendingBindings()
         }
 
         companion object {
@@ -66,12 +52,31 @@ class AllUserAdapter : RecyclerView.Adapter<AllUserAdapter.MyViewHolder>()  {
             fun from(parent: ViewGroup): MyViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 // вказуєм який layout (шаблон) використовувати для одного виводу User
-                val view = layoutInflater.inflate(R.layout.user_short, parent, false)
+//                val view = layoutInflater.inflate(R.layout.user_short, parent, false)
+                val binding = UserShortBinding.inflate(layoutInflater, parent, false)
 
-                return MyViewHolder(view)
+                return MyViewHolder(binding)
             }
         }
 
     }
 
+}
+
+class AllUserDiffCallback : DiffUtil.ItemCallback<User>() {
+    // Перевіряє, чи передано обидва User предмети, oldItem та newItem, однакові.
+    // Якщо  userId однакові, то поверніться true. В іншому випадку поверніться false.
+    // DiffUtil використовує цей тест, щоб дізнатися,
+    // чи був доданий, видалений чи переміщений елемент.
+    override fun areItemsTheSame(oldItem: User, newItem: User): Boolean {
+        return oldItem.userId == newItem.userId
+    }
+
+    // Всередині areContentsTheSame(), перевіряється чи oldItem та newItem містять однакові дані,
+    // тобто чи  вони рівні. Ця перевірка рівності перевірить усі поля, тому що User це клас даних.
+    // Data класи автоматично визначають equals і кілька інших методів для вас. Якщо є відмінності
+    // між oldItem та newItem, розповідає цей код DiffUtil що елемент оновлено.
+    override fun areContentsTheSame(oldItem: User, newItem: User): Boolean {
+        return oldItem == newItem
+    }
 }
