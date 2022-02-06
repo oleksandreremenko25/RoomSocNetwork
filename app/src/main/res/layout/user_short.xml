@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
     <data>
         <variable
             name="user"
             type="com.example.socnetwork.database.User"/>
-
+        <variable
+            name="AllUserActivity"
+            type="com.example.socnetwork.allUser.AllUserActivity" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/oneUserWrapper"
         android:onClick="userShortClick"
+
         android:orientation="vertical">
 
 
@@ -21,7 +26,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:textSize="22sp" />
+            android:textSize="22sp"
+            app:idStringUser="@{user}"/>
 
         <ImageView
             android:id="@+id/photoUser"

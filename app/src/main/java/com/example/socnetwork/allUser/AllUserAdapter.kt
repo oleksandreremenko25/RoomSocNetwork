@@ -39,10 +39,10 @@ class AllUserAdapter : ListAdapter<User, AllUserAdapter.MyViewHolder>(AllUserDif
     class MyViewHolder private constructor(val binding: UserShortBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(oneUser: User) {
-//            Picasso.get().load(oneUser.photo).placeholder(R.drawable.no).into(itemView.photoUser);
 
+            // передаєм в xml файл одного юзера який тоді буде записаний по полям
             binding.user = oneUser
-
+            itemView.id = oneUser.userId!!.toInt()
             binding.executePendingBindings()
         }
 
@@ -51,8 +51,7 @@ class AllUserAdapter : ListAdapter<User, AllUserAdapter.MyViewHolder>(AllUserDif
             // було викликати на ViewHolder клас, не викликаний на ViewHolder екземпляр.
             fun from(parent: ViewGroup): MyViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                // вказуєм який layout (шаблон) використовувати для одного виводу User
-//                val view = layoutInflater.inflate(R.layout.user_short, parent, false)
+
                 val binding = UserShortBinding.inflate(layoutInflater, parent, false)
 
                 return MyViewHolder(binding)

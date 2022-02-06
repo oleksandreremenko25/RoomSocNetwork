@@ -19,7 +19,9 @@ import kotlinx.coroutines.launch
 import com.example.socnetwork.fullUser.FullUserActivity
 import com.example.socnetwork.editUser.EditUserActivity
 import android.content.Intent
+import android.widget.Button
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.socnetwork.newUser.NewUserActivity
 
@@ -28,7 +30,7 @@ class AllUserActivity  : AppCompatActivity()  {
     var allSleep: RecyclerView? = null
     var idUser: TextView? = null
 
-    @Override
+        @Override
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.user_all)
@@ -65,22 +67,28 @@ class AllUserActivity  : AppCompatActivity()  {
 
         // Після того як отримали посилання на об’єкт зв’язування, зв’язуєм RecyclerView з adapter
         allSleep?.adapter = adapter
+
+
+
+
+
     }
 
     fun userShortClick(views: View) {
 
         val intent = Intent(this, FullUserActivity::class.java)
 
-        idUser = findViewById(R.id.idUser)
+
 
         // зчитуєм id номер user для його передачі в FullUserActivity
+//        val idUser: Int = views.id
         val idUser: Int = views.id
+
 
         intent.putExtra("keyUserId", idUser)
 
         startActivity(intent)
     }
-
 
 
 

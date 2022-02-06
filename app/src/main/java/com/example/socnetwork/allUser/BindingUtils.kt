@@ -8,13 +8,14 @@ import com.example.socnetwork.database.User
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.user_short.view.*
 
-
-
-    // Ця функція буде вашим адаптером для обчислення та форматування тривалості сну
+    // Ця функція є адаптером для відображення фотографії юзера в user_short.xml
     @BindingAdapter("userImage")
     fun ImageView.setUserImage(oneUser: User) {
-
         Picasso.get().load(oneUser.photo).placeholder(R.drawable.no).into(this)
+    }
 
+    @BindingAdapter("idStringUser")
+    fun TextView.setIdString(onewUser: User) {
+        text = onewUser.userId.toString()
     }
 
