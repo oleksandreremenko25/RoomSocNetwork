@@ -6,31 +6,17 @@ import android.view.View
 import com.example.socnetwork.*
 import com.example.socnetwork.database.UserDatabase
 import androidx.lifecycle.ViewModelProvider
-import android.content.Context
-import android.util.Log
-import android.widget.LinearLayout
-import com.example.socnetwork.database.User
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.user_short.view.*
 import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import com.example.socnetwork.fullUser.FullUserActivity
-import com.example.socnetwork.editUser.EditUserActivity
 import android.content.Intent
-import android.widget.Button
-import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.socnetwork.newUser.NewUserActivity
 
 class AllUserActivity  : AppCompatActivity()  {
     private lateinit var allUserViewModel: AllUserViewModel
     var allSleep: RecyclerView? = null
-    var idUser: TextView? = null
 
-        @Override
+    @Override
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.user_all)
@@ -68,36 +54,15 @@ class AllUserActivity  : AppCompatActivity()  {
         // Після того як отримали посилання на об’єкт зв’язування, зв’язуєм RecyclerView з adapter
         allSleep?.adapter = adapter
 
-
-
-
-
     }
 
     fun userShortClick(views: View) {
-
         val intent = Intent(this, FullUserActivity::class.java)
-
-
-
         // зчитуєм id номер user для його передачі в FullUserActivity
-//        val idUser: Int = views.id
         val idUser: Int = views.id
-
-
         intent.putExtra("keyUserId", idUser)
-
         startActivity(intent)
     }
-
-
-
-
-
-
-
-
-
 
     fun toNewUserClick(views: View) {
         val intent = Intent(this, NewUserActivity::class.java)

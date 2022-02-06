@@ -2,15 +2,9 @@ package com.example.socnetwork.allUser
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.annotation.NonNull
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.socnetwork.database.User
-import com.example.socnetwork.R
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.user_short.view.*
 import androidx.recyclerview.widget.ListAdapter
 import com.example.socnetwork.databinding.UserShortBinding
 
@@ -34,12 +28,9 @@ class AllUserAdapter : ListAdapter<User, AllUserAdapter.MyViewHolder>(AllUserDif
         return MyViewHolder.from(parent)
     }
 
-    // View - це елемент який буде потім розмножений
-    // для заповнення RecyclerView в файлі xml
     class MyViewHolder private constructor(val binding: UserShortBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(oneUser: User) {
-
             // передаєм в xml файл одного юзера який тоді буде записаний по полям
             binding.user = oneUser
             itemView.id = oneUser.userId!!.toInt()
