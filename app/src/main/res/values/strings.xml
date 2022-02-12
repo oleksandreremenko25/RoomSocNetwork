@@ -9,6 +9,7 @@
     <string name="tittleFollowers">FOLLOWERS</string>
     <string name="tittlePosts">%1$S POSTS</string>
     <string name="tittleLikes">%1$S LIKES</string>
+    <string name="buttonRemove">REMOVE PROFILE</string>
 
 
     <string name="mainTittleUserEdit">Сторінка редагування нового юзера</string>

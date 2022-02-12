@@ -28,6 +28,8 @@ interface UserDatabaseDao {
     suspend fun getUser(searchUserId: Long): User?
 
     @Query("SELECT * FROM user_table ORDER BY userId DESC")
-
     fun getAllUser(): List<User>
+
+    @Query("DELETE from user_table WHERE userId = :userId")
+    suspend fun removeUserById(userId: Long)
 }

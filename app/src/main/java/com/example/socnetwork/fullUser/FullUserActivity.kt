@@ -10,6 +10,7 @@ import android.widget.ImageView
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.Observer
 import com.example.socnetwork.R
+import com.example.socnetwork.allUser.AllUserActivity
 import com.example.socnetwork.allUser.AllUserViewModel
 import com.example.socnetwork.allUser.AllUserViewModelFactory
 import com.example.socnetwork.database.User
@@ -109,6 +110,12 @@ class FullUserActivity : AppCompatActivity()  {
         val intent = Intent(this, EditUserActivity::class.java)
 
         intent.putExtra("keyUserId", idInt)
+        startActivity(intent)
+    }
+
+    fun userRemoveClick(views: View) {
+        fullUserViewModel.removeUser(idInt!!.toLong())
+        val intent = Intent(this, AllUserActivity::class.java)
         startActivity(intent)
     }
 }

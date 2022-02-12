@@ -21,4 +21,10 @@ class FullUserViewModel (val database: UserDatabaseDao, application: Application
     private suspend fun getUser(id: Long): User? {
         return database.getUser(id)
     }
+
+    fun removeUser(id: Long) {
+        viewModelScope.launch(Dispatchers.IO) {
+            database.removeUserById(id)
+        }
+    }
 }
