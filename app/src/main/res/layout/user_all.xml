@@ -14,14 +14,6 @@
         android:onClick="toNewUserClick"
         style="@style/buttonNewUserClick"
         android:text="Add New User" />
-    <TextView
-        android:id="@+id/messageStatusLostOperation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/ButtonNewUserClick"
-        app:layout_constraintEnd_toEndOf="@+id/ButtonNewUserClick"
-        app:layout_constraintStart_toStartOf="@+id/ButtonNewUserClick"
-        android:text=""/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/all_sleep"
         style="@style/all_sleep"
@@ -31,5 +23,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/messageStatusLostOperation" />
+        app:layout_constraintTop_toBottomOf="@+id/ButtonNewUserClick" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,31 +10,25 @@ import kotlinx.coroutines.Dispatchers
 
 class AllUserViewModel (val database: UserDatabaseDao, application: Application) : AndroidViewModel(application) {
     private var _allUserList = MutableLiveData<List<User>>()
-    var allUserList: LiveData<List<User>> = _allUserList
+//    var allUserList: LiveData<List<User>> = _allUserList
+    val allUserList: LiveData<List<User>> = database.getAllUser()
 
     init {
-        viewModelScope.launch(Dispatchers.IO) {
-
-            // перевірка чи існують якісь записи в базі даних і
-            // якщо їх не існує тоді виконується запис в базу даних даниз
-            // з локального файлу
-            if(database.getAllUser().isEmpty()) {
-                for (oneUser in UserData.usersList) {
-                    insert(oneUser)
-                }
-            }
-
-            _allUserList.postValue(getAllUser())
-
-        }
     }
 
     private suspend fun insert(newUser: User) {
-
         database.insert(newUser)
     }
 
-    private fun getAllUser(): List<User> {
-        return database.getAllUser()
+    // Перевірка чи існуюсь записи в базі даних
+    fun populate() = viewModelScope.launch {(Dispatchers.IO)
+        //Бере перший запис в базі даних
+        val users = database.getFirstUser()
+        // Перевіряє чи те що було взяте в першій строкі не null і не пусте
+        if(users == null) {
+            for (oneUser in UserData.usersList) {
+                insert(oneUser)
+            }
+        }
     }
 }

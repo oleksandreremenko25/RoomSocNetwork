@@ -27,9 +27,16 @@ interface UserDatabaseDao {
     @Query("SELECT * FROM user_table WHERE userId = :searchUserId")
     suspend fun getUser(searchUserId: Long): User?
 
+//    @Query("SELECT * FROM user_table ORDER BY userId DESC")
+//    fun getAllUser(): List<User>
     @Query("SELECT * FROM user_table ORDER BY userId DESC")
-    fun getAllUser(): List<User>
+    fun getAllUser(): LiveData<List<User>>
 
     @Query("DELETE from user_table WHERE userId = :userId")
     suspend fun removeUserById(userId: Long)
+
+    // Бере перший запис в базі даних
+    // (щоб в AllUserViewModel перевірити чи існує хоч якийсь запис в базі даних)
+    @Query("SELECT * from user_table limit 1")
+    suspend fun getFirstUser(): User?
 }

@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import com.example.socnetwork.fullUser.FullUserActivity
 import android.content.Intent
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -20,13 +21,11 @@ class AllUserActivity  : AppCompatActivity()  {
     private lateinit var allUserViewModel: AllUserViewModel
     var allSleep: RecyclerView? = null
     private var launcherForNewUserActivity: ActivityResultLauncher<Intent>? = null
-    var messageStatusLostOperation: TextView? = null
 
     @Override
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.user_all)
-        messageStatusLostOperation = findViewById(R.id.messageStatusLostOperation)
         val application = requireNotNull(this).application
 
         val dataSource = UserDatabase.getInstance(application).userDatabaseDao
@@ -34,7 +33,7 @@ class AllUserActivity  : AppCompatActivity()  {
         val viewModelFactory = AllUserViewModelFactory(dataSource, application)
 
         allUserViewModel = ViewModelProvider(this, viewModelFactory).get(AllUserViewModel::class.java)
-
+        allUserViewModel.populate()
         // Файлу RecyclerView потрібно знати який адаптер використовувати,
         // щоб отримати утримувачі перегляду.
         val adapter = AllUserAdapter()
@@ -70,7 +69,7 @@ class AllUserActivity  : AppCompatActivity()  {
                 // nameUserFromNewUserActivity то він буде записаний в змінну name
                 val name = result.data?.getStringExtra("nameUserFromNewUserActivity")
                 if (name!!.isNotEmpty()) {
-                    messageStatusLostOperation?.text = "Анкету " + name + " збережено"
+                    Toast.makeText(applicationContext, "Анкету  $name збережено", Toast.LENGTH_LONG).show()
                 }
 
             }
