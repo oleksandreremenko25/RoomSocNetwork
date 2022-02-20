@@ -1,5 +1,6 @@
 package com.example.socnetwork.newUser
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.EditText
@@ -7,6 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModelProvider
 import com.example.socnetwork.*
 import com.example.socnetwork.UserData
@@ -38,6 +42,13 @@ class NewUserActivity  : AppCompatActivity()  {
 
         buttonSaveNewUser?.setOnClickListener {
             saveNewUserClick()
+            val intent = Intent(this, AllUserActivity::class.java)
+            intent.putExtra("nameUserFromNewUserActivity", nameNewUser?.text.toString())
+            setResult(RESULT_OK, intent)
+
+            // Закриваєм данну Activity і повертаємось до попередньої
+            // (з якої колись я перейшов на NewUserActivity)
+            finish()
         }
     }
 
@@ -66,9 +77,7 @@ class NewUserActivity  : AppCompatActivity()  {
 
         newUserViewModel.insert(newUser)
 
-        val intent = Intent(this, AllUserActivity::class.java)
 
-        startActivity(intent)
     }
 
 }

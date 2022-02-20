@@ -9,18 +9,24 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.Observer
 import com.example.socnetwork.fullUser.FullUserActivity
 import android.content.Intent
+import android.widget.TextView
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.RecyclerView
 import com.example.socnetwork.newUser.NewUserActivity
 
 class AllUserActivity  : AppCompatActivity()  {
     private lateinit var allUserViewModel: AllUserViewModel
     var allSleep: RecyclerView? = null
+    private var launcherForNewUserActivity: ActivityResultLauncher<Intent>? = null
+    var messageStatusLostOperation: TextView? = null
 
     @Override
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.user_all)
-
+        messageStatusLostOperation = findViewById(R.id.messageStatusLostOperation)
         val application = requireNotNull(this).application
 
         val dataSource = UserDatabase.getInstance(application).userDatabaseDao
@@ -54,6 +60,22 @@ class AllUserActivity  : AppCompatActivity()  {
         // Після того як отримали посилання на об’єкт зв’язування, зв’язуєм RecyclerView з adapter
         allSleep?.adapter = adapter
 
+
+        // Запускається тоді коли приходить відповідь Activity яке з його допомогою його запустили
+        launcherForNewUserActivity = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            // змінна result несе в собі код
+            result: ActivityResult ->
+            if(result.resultCode == RESULT_OK) {
+                // якщо прийшов результат і він ніc існформацію під назвою
+                // nameUserFromNewUserActivity то він буде записаний в змінну name
+                val name = result.data?.getStringExtra("nameUserFromNewUserActivity")
+                if (name!!.isNotEmpty()) {
+                    messageStatusLostOperation?.text = "Анкету " + name + " збережено"
+                }
+
+            }
+        }
+
     }
 
     fun userShortClick(views: View) {
@@ -62,10 +84,13 @@ class AllUserActivity  : AppCompatActivity()  {
         val idUser: Int = views.id
         intent.putExtra("keyUserId", idUser)
         startActivity(intent)
+
     }
 
     fun toNewUserClick(views: View) {
         val intent = Intent(this, NewUserActivity::class.java)
-        startActivity(intent)
+//        startActivity(intent)
+        launcherForNewUserActivity?.launch(intent)
+
     }
 }
